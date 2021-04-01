@@ -1,0 +1,26 @@
+.add-product-section {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.add-product-form {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-input-field > input {
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+}
