@@ -7,6 +7,7 @@ const Sidebar = () => {
   return (
     <aside className='sidebar'>
       <ul>
+        <li id='logo'>GoShop</li>
         <li>
           <Link to='/'>Home</Link>
         </li>

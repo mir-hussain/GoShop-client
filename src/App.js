@@ -30,26 +30,20 @@ function App() {
           <Route path='/home'>
             <Home />
           </Route>
-          {/* <PrivateRoute path='/admin'>
+          <PrivateRoute path='/admin'>
             <Admin />
           </PrivateRoute>
           <PrivateRoute path='/orders'>
             <Orders />
-          </PrivateRoute> */}
+          </PrivateRoute>
+          <PrivateRoute path='/checkout'>
+            <Checkout />
+          </PrivateRoute>
+          <PrivateRoute path='/shipment'>
+            <Shipment />
+          </PrivateRoute>
           <Route path='/login'>
             <Login />
-          </Route>
-          <Route path='/orders'>
-            <Orders />
-          </Route>
-          <Route path='/checkout'>
-            <Checkout />
-          </Route>
-          <Route path='/admin'>
-            <Admin />
-          </Route>
-          <Route path='/shipment'>
-            <Shipment />
           </Route>
         </Switch>
       </Router>

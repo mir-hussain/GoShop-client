@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getDatabaseCart, removeFromDatabaseCart } from "../../../utilities/DatabaseManager";
 import { useHistory } from "react-router-dom";
+import "./Checkout.css";
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
-  console.log(cart);
+  console.log(cart.length);
   const history = useHistory();
 
   const handlePlaceOrder = () => {
@@ -35,24 +36,38 @@ const Checkout = () => {
 
   return (
     <div>
-      <div>
-        {cart.map((product) => (
-          <CheckoutItems key={product.key} product={product} handleRemoveProduct={handleRemoveProduct} />
-        ))}
-      </div>
-      <button onClick={handlePlaceOrder}>Place Order</button>
+      {cart.length === 0 ? (
+        <h1 className='checkout-error'>Your cart is empty.</h1>
+      ) : (
+        <div>
+          <div className='table-header'>
+            <p>Product name</p>
+            <p>price</p>
+            <p>Action</p>
+          </div>
+          <div>
+            {cart.map((product) => (
+              <CheckoutItems key={product.key} product={product} handleRemoveProduct={handleRemoveProduct} />
+            ))}
+          </div>
+          <button className='secondary-btn checkout-btn' onClick={handlePlaceOrder}>
+            Place Order
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
 const CheckoutItems = (props) => {
-  const { key, name, price, manufacturer } = props.product;
+  const { key, name, price } = props.product;
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className='table-body'>
+      <p>{name}</p>
       <p>{price}</p>
-      <p>{manufacturer}</p>
-      <button onClick={() => props.handleRemoveProduct(key)}>Remove Product</button>
+      <button className='delete-btn' onClick={() => props.handleRemoveProduct(key)}>
+        Remove Product
+      </button>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 .sidebar {
   width: 20%;
+  height: 100vh;
+  background-color: var(--light-gray);
 }
 
 .sidebar > ul {
@@ -10,4 +12,8 @@
 .sidebar > ul > li {
   margin-left: 1.5rem;
   padding: 1rem;
+}
+
+.sidebar > ul > li > a {
+  color: var(--off-white);
 }

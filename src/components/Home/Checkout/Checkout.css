@@ -1,0 +1,8 @@
+.checkout-btn {
+  margin: 50px;
+}
+
+.checkout-error {
+  text-align: center;
+  color: var(--off-white);
+}

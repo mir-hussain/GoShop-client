@@ -12,6 +12,7 @@ const Header = () => {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
+
   const query = useQuery();
   const queryName = query.get("name");
   let hide = { display: "block" };
@@ -46,14 +47,19 @@ const Header = () => {
             <Link to='/orders'>Orders</Link>
           </li>
           <li>
-            <Link to='/admin?name=admin-panel'>Admin</Link>
+            <Link to='/admin/manage-products?name=admin-panel'>Admin</Link>
           </li>
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
-          <li>
-            <Link to='/checkout'> Checkout </Link>
-          </li>
+
+          {!loggedInUser.isSignedIn && (
+            <li>
+              <Link to='/login'>Login</Link>
+            </li>
+          )}
+          {loggedInUser.isSignedIn && (
+            <li>
+              <Link to='/checkout'> Checkout </Link>
+            </li>
+          )}
           {loggedInUser.isSignedIn && (
             <li>
               <button id='logout-btn' onClick={signOut}>

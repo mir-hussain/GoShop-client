@@ -43,7 +43,7 @@ const AddProduct = () => {
   return (
     <div className='add-product-section'>
       <form className='add-product-form' onSubmit={handleSubmit(onSubmit)}>
-        <h1 className='form-header'>Add Product here: </h1>
+        <h1 className='form-header'>Add Product here </h1>
         <div className='product-input-field'>
           <label htmlFor='name'>Add product name</label>
           <input id='name' name='name' placeholder='Enter Product name' ref={register({ required: true })} />
@@ -64,7 +64,7 @@ const AddProduct = () => {
           <label htmlFor='image'>Add product image</label>
           <input id='image' name='image' type='file' onChange={handleImageUpload} />
         </div>
-        {imageURL === null ? <input type='submit' value='Save' disabled /> : <input type='submit' value='Save' />}
+        {imageURL === null ? <input className='primary-btn' type='submit' value='Save' disabled /> : <input className='primary-btn' type='submit' value='Save' />}
       </form>
     </div>
   );

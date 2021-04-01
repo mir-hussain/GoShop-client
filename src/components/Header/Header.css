@@ -5,7 +5,6 @@ header {
   bottom: 0;
   left: 0;
   right: 0; */
-  background-image: linear-gradient(#fff, rgba(255, 255, 255, 0));
 }
 
 nav {
@@ -30,13 +29,14 @@ nav > ul > li {
 nav > ul > li > a {
   text-decoration: none;
   font-size: 1.3em;
-  color: black;
+  color: var(--off-white);
 }
 
 #logo {
   font-size: 2em;
   margin-right: auto;
-  font-family: "Bebas Neue", cursive;
+  font-family: var(--secondary-ff);
+  color: var(--off-white);
 }
 
 #user-name {
@@ -45,7 +45,7 @@ nav > ul > li > a {
 
 #logout-btn {
   background-color: #4e4e4e96;
-  color: #000;
+  color: var(--off-white);
   border: none;
   font-weight: bold;
   padding: 10px 20px;

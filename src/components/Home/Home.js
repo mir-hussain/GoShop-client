@@ -44,7 +44,7 @@ const Home = () => {
       newCart = [...cart, product];
     }
     setCart(newCart);
-    addToDatabaseCart(product.key, count);
+    addToDatabaseCart(product.key, product);
   };
   return (
     <div className='cards-container'>

@@ -10,15 +10,15 @@ const ManageProducts = () => {
   }, []);
 
   return (
-    <div className='product-table-container'>
-      <div className='product-table-header'>
-        <h3>Product name</h3>
-        <h3>Price</h3>
-        <h3>Action</h3>
+    <div className='product-list'>
+      <div className='table-header'>
+        <p>Product name</p>
+        <p>price</p>
+        <p>Action</p>
       </div>
       <div className='product-table-body'>
         {products.map((product) => (
-          <Product product={product} />
+          <Product key={product.key} product={product} />
         ))}
       </div>
     </div>
@@ -26,12 +26,12 @@ const ManageProducts = () => {
 };
 
 const Product = ({ product }) => {
-  const { productName, price } = product;
+  const { name, price } = product;
   return (
-    <div className='product-table-row'>
-      <h4>{productName}</h4>
-      <p>{price}</p>
-      <button>Delete</button>
+    <div className='table-body'>
+      <p>{name}</p>
+      <p>{price} $ </p>
+      <button className='delete-btn'>Delete</button>
     </div>
   );
 };
