@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import Product from "./Product/Product";
 import "./Home.css";
 import { addToDatabaseCart, getDatabaseCart } from "../../utilities/DatabaseManager";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export const CheckoutContext = createContext();
 
@@ -10,7 +11,7 @@ const Home = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://goshop-server.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -18,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    fetch("http://localhost:5000/productsByKeys", {
+    fetch("https://goshop-server.herokuapp.com/productsByKeys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,10 +45,11 @@ const Home = () => {
       newCart = [...cart, product];
     }
     setCart(newCart);
-    addToDatabaseCart(product.key, product);
+    addToDatabaseCart(product.key, count);
   };
   return (
     <div className='cards-container'>
+      {products.length === 0 && <CircularProgress style={{ color: "#c0da53" }} />}
       {products.map((product) => (
         <Product handleBuyNow={handleBuyNow} key={product._id} product={product} />
       ))}

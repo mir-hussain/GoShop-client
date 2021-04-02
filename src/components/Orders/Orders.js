@@ -11,17 +11,17 @@ const Orders = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/orders?email=" + loggedInUser.email)
+    fetch("https://goshop-server.herokuapp.com/orders?email=" + loggedInUser.email)
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, []);
+  }, [loggedInUser.email]);
 
   useEffect(() => {
     const products = orders.map((order) => order.products);
     const product = products.map((pd) => Object.keys(pd));
     const productKeys = [].concat.apply([], product);
 
-    fetch("http://localhost:5000/productsByKeys", {
+    fetch("https://goshop-server.herokuapp.com/productsByKeys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

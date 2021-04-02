@@ -50,21 +50,20 @@ const Header = () => {
             <Link to='/admin/manage-products?name=admin-panel'>Admin</Link>
           </li>
 
-          {!loggedInUser.isSignedIn && (
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
-          )}
           {loggedInUser.isSignedIn && (
             <li>
               <Link to='/checkout'> Checkout </Link>
             </li>
           )}
-          {loggedInUser.isSignedIn && (
+          {loggedInUser.isSignedIn ? (
             <li>
               <button id='logout-btn' onClick={signOut}>
                 Log out
               </button>
+            </li>
+          ) : (
+            <li>
+              <Link to='/login'>Login</Link>
             </li>
           )}
         </ul>

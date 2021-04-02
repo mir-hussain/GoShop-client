@@ -17,8 +17,9 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({});
-  console.log(loggedInUser);
+  const [loggedInUser, setLoggedInUser] = useState({
+    isSignedIn: false,
+  });
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>

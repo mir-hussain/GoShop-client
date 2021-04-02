@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Login.css";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
@@ -8,7 +8,6 @@ initializeFirebase();
 
 const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  console.log(loggedInUser);
 
   let history = useHistory();
   let location = useLocation();
@@ -22,24 +21,6 @@ const Login = () => {
     }
   };
 
-  // const handleGoogleSignIn = () => {
-  //   const provider = new firebase.auth.GoogleAuthProvider();
-  //   firebase
-  //     .auth()
-  //     .signInWithPopup(provider)
-  //     .then((result) => {
-  //       /** @type {firebase.auth.OAuthCredential} */
-  //       handleResponse(loggedInUser, true);
-  //       const currentUser = { ...loggedInUser };
-  //       currentUser.name = loggedInUser.displayName;
-  //       currentUser.loggedIn = true;
-  //       setLoggedInUser(currentUser);
-  //     })
-  //     .catch((error) => {
-  //       const errorMessage = error.message;
-  //       console.log("Error", errorMessage);
-  //     });
-  // };
   const googleSignIn = () => {
     handleGoogleSignIn().then((res) => {
       handleResponse(res, true);

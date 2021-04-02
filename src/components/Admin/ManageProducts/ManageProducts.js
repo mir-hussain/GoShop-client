@@ -3,8 +3,19 @@ import "./ManageProducts.css";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
+
+  const deleteProduct = (id) => {
+    fetch("https://goshop-server.herokuapp.com/deleteProduct/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
+
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://goshop-server.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -18,20 +29,22 @@ const ManageProducts = () => {
       </div>
       <div className='product-table-body'>
         {products.map((product) => (
-          <Product key={product.key} product={product} />
+          <Product deleteProduct={deleteProduct} key={product.key} product={product} />
         ))}
       </div>
     </div>
   );
 };
 
-const Product = ({ product }) => {
-  const { name, price } = product;
+const Product = (props) => {
+  const { name, price, _id } = props.product;
   return (
     <div className='table-body'>
       <p>{name}</p>
       <p>{price} $ </p>
-      <button className='delete-btn'>Delete</button>
+      <button className='delete-btn' onClick={() => props.deleteProduct(_id)}>
+        Delete
+      </button>
     </div>
   );
 };

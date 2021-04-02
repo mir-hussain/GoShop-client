@@ -16,10 +16,9 @@ const AddProduct = () => {
       manufacturer: data.manufacturer,
     };
     axios
-      .post("http://localhost:5000/addProduct", productData)
+      .post("https://goshop-server.herokuapp.com/addProduct", productData)
       .then((res) => {
         console.log(res);
-        window.location.reload();
       })
       .catch((err) => console.log(err));
   };

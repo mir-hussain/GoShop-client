@@ -72,13 +72,15 @@ body {
 
 .table-header,
 .table-body {
-  height: 3rem;
+  height: 4rem;
 }
 
 .table-header {
   background-color: var(--light-gray);
   color: var(--off-white);
   font-weight: bold;
+  position: sticky;
+  top: 0;
 }
 
 .table-body {
