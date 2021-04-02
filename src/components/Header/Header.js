@@ -7,7 +7,7 @@ import { UserContext } from "../../App";
 import firebase from "firebase/app";
 
 const Header = () => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -30,9 +30,9 @@ const Header = () => {
       .catch((error) => {
         // An error happened.
       });
-    let currentUser = { ...loggedInUser };
+    let currentUser = { ...user };
     currentUser = {};
-    setLoggedInUser(currentUser);
+    setUser(currentUser);
   };
 
   return (
@@ -50,12 +50,12 @@ const Header = () => {
             <Link to='/admin/manage-products?name=admin-panel'>Admin</Link>
           </li>
 
-          {loggedInUser.email && (
+          {user.email && (
             <li>
               <Link to='/checkout'> Checkout </Link>
             </li>
           )}
-          {loggedInUser.email ? (
+          {user.email ? (
             <li>
               <button id='logout-btn' onClick={signOut}>
                 Log out
