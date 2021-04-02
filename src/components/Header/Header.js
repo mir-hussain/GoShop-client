@@ -50,12 +50,12 @@ const Header = () => {
             <Link to='/admin/manage-products?name=admin-panel'>Admin</Link>
           </li>
 
-          {loggedInUser.isSignedIn && (
+          {loggedInUser.email && (
             <li>
               <Link to='/checkout'> Checkout </Link>
             </li>
           )}
-          {loggedInUser.isSignedIn ? (
+          {loggedInUser.email ? (
             <li>
               <button id='logout-btn' onClick={signOut}>
                 Log out
