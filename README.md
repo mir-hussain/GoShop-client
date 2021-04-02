@@ -1,5 +1,7 @@
-GoShop Project
+# Project Name: **_GoShop_**
 
-client side repo link : https://github.com/Porgramming-Hero-web-course/full-stack-client-mir6996
+[Live Site](https://goshop-7dbb5.web.app "Firebase Deploy")
 
-server side repo link : https://github.com/Porgramming-Hero-web-course/full-stack-server-mir6996
+[Client Side Repository Link](https://github.com/Porgramming-Hero-web-course/full-stack-client-mir6996 "Client repository")
+
+[Server Side Repository Link](https://github.com/Porgramming-Hero-web-course/full-stack-server-mir6996 "Server repository")

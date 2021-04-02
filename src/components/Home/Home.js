@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 //css
 import "./Home.css";
 //to handle cart
@@ -7,12 +7,12 @@ import { addToDatabaseCart, getDatabaseCart } from "../../utilities/DatabaseMana
 import CircularProgress from "@material-ui/core/CircularProgress";
 //component
 import Product from "./Product/Product";
-
-export const CheckoutContext = createContext();
+import { UserContext } from "../../App";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useContext(UserContext);
 
   useEffect(() => {
     fetch("https://goshop-server.herokuapp.com/products")
@@ -35,21 +35,25 @@ const Home = () => {
   }, []);
 
   const handleBuyNow = (product) => {
-    const toBeAddedKey = product.key;
-    const sameProduct = cart.find((pd) => pd.key === toBeAddedKey);
-    let count = 1;
-    let newCart;
-    if (sameProduct) {
-      count = sameProduct.quantity + 1;
-      sameProduct.quantity = count;
-      const others = cart.filter((pd) => pd.key !== toBeAddedKey);
-      newCart = [...others, sameProduct];
+    if (user.email) {
+      const toBeAddedKey = product.key;
+      const sameProduct = cart.find((pd) => pd.key === toBeAddedKey);
+      let count = 1;
+      let newCart;
+      if (sameProduct) {
+        count = sameProduct.quantity + 1;
+        sameProduct.quantity = count;
+        const others = cart.filter((pd) => pd.key !== toBeAddedKey);
+        newCart = [...others, sameProduct];
+      } else {
+        product.quantity = 1;
+        newCart = [...cart, product];
+      }
+      setCart(newCart);
+      addToDatabaseCart(product.key, count);
     } else {
-      product.quantity = 1;
-      newCart = [...cart, product];
+      alert("Please login first.");
     }
-    setCart(newCart);
-    addToDatabaseCart(product.key, count);
   };
 
   return (

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { UserContext } from "../../../App";
 import { getDatabaseCart, processOrder } from "../../../utilities/DatabaseManager";
+import "./Shipment.css";
 
 const Shipment = (data) => {
   const { register, handleSubmit, errors } = useForm();
@@ -28,21 +29,23 @@ const Shipment = (data) => {
       });
   };
   return (
-    <form className='ship-form' onSubmit={handleSubmit(onSubmit)}>
-      <input name='name' defaultValue={user.name} ref={register({ required: true })} placeholder='Your Name' />
-      {errors.name && <span className='error'>Name is required</span>}
+    <div className='shipment-container'>
+      <form className='shipment-form' onSubmit={handleSubmit(onSubmit)}>
+        <input name='name' defaultValue={user.name} ref={register({ required: true })} placeholder='Your Name' />
+        {errors.name && <span className='error'>Name is required</span>}
 
-      <input name='email' defaultValue={user.email} ref={register({ required: true })} placeholder='Your Email' />
-      {errors.email && <span className='error'>Email is required</span>}
+        <input name='email' defaultValue={user.email} ref={register({ required: true })} placeholder='Your Email' />
+        {errors.email && <span className='error'>Email is required</span>}
 
-      <input name='address' ref={register({ required: true })} placeholder='Your Address' />
-      {errors.address && <span className='error'>Address is required</span>}
+        <input name='address' ref={register({ required: true })} placeholder='Your Address' />
+        {errors.address && <span className='error'>Address is required</span>}
 
-      <input name='phone' ref={register({ required: true })} placeholder='Your Phone Number' />
-      {errors.phone && <span className='error'>Phone Number is required</span>}
+        <input name='phone' ref={register({ required: true })} placeholder='Your Phone Number' />
+        {errors.phone && <span className='error'>Phone Number is required</span>}
 
-      <input type='submit' />
-    </form>
+        <input type='submit' />
+      </form>
+    </div>
   );
 };
 
