@@ -1,12 +1,13 @@
 import React from "react";
+//css
+import "./Admin.css";
+//react-router-dom
+import { Switch, Route, useRouteMatch } from "react-router-dom";
+import Home from "../Home/Home";
+//components
 import Sidebar from "./Sidebar/Sidebar";
 import ManageProducts from "./ManageProducts/ManageProducts";
 import AddProduct from "./AddProduct/AddProduct";
-
-//Router
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Home from "../Home/Home";
-import "./Admin.css";
 
 const Admin = () => {
   let { path } = useRouteMatch();

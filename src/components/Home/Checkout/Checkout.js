@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getDatabaseCart, removeFromDatabaseCart } from "../../../utilities/DatabaseManager";
-import { useHistory } from "react-router-dom";
+//css
 import "./Checkout.css";
+import { useHistory } from "react-router-dom";
+//to save the cart
+import { getDatabaseCart, removeFromDatabaseCart } from "../../../utilities/DatabaseManager";
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
@@ -58,6 +60,8 @@ const Checkout = () => {
     </div>
   );
 };
+
+// item row
 
 const CheckoutItems = (props) => {
   const { key, name, price } = props.product;

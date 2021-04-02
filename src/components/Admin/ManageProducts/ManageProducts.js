@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
+
+//css
 import "./ManageProducts.css";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
 
+  //to delete a selected product
+
   const deleteProduct = (id) => {
     fetch("https://goshop-server.herokuapp.com/deleteProduct/" + id, {
       method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
+    }).then((res) => console.log(res));
   };
+
+  //to load data from database
 
   useEffect(() => {
     fetch("https://goshop-server.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, []);
+  });
 
   return (
     <div className='product-list'>
@@ -35,6 +37,8 @@ const ManageProducts = () => {
     </div>
   );
 };
+
+//Product information (row)
 
 const Product = (props) => {
   const { name, price, _id } = props.product;

@@ -1,8 +1,7 @@
 .cards-container {
   background-color: var(--dark-gray);
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, 320px);
   gap: 50px;
   justify-content: center;
-  margin: 1.5rem 0;
 }

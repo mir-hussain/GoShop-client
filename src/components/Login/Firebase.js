@@ -9,21 +9,26 @@ export const initializeFirebase = () => {
 };
 
 export const handleGoogleSignIn = () => {
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const provider = new firebase.auth.GoogleAuthProvider();
+
   return firebase
     .auth()
-    .signInWithPopup(googleProvider)
+    .signInWithPopup(provider)
     .then((res) => {
       const { displayName, photoURL, email } = res.user;
       const signedInUser = {
+        isSignedIn: true,
         name: displayName,
         email: email,
         photo: photoURL,
+        success: true,
       };
+
       return signedInUser;
     })
-    .catch((err) => {
-      console.log(err);
-      console.log(err.message);
+    .catch((error) => {
+      const errorMessage = error.message;
+      console.log("error", errorMessage);
+      console.log(error);
     });
 };

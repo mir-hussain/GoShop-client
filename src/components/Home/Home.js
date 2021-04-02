@@ -1,8 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
-import Product from "./Product/Product";
+//css
 import "./Home.css";
+//to handle cart
 import { addToDatabaseCart, getDatabaseCart } from "../../utilities/DatabaseManager";
+//for spinner
 import CircularProgress from "@material-ui/core/CircularProgress";
+//component
+import Product from "./Product/Product";
 
 export const CheckoutContext = createContext();
 
@@ -47,6 +51,7 @@ const Home = () => {
     setCart(newCart);
     addToDatabaseCart(product.key, count);
   };
+
   return (
     <div className='cards-container'>
       {products.length === 0 && <CircularProgress style={{ color: "#c0da53" }} />}

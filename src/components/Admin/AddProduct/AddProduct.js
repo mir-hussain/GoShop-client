@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+
+//css
+import "./AddProduct.css";
+
+//react-hook-form
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import "./AddProduct.css";
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
@@ -19,6 +23,7 @@ const AddProduct = () => {
       .post("https://goshop-server.herokuapp.com/addProduct", productData)
       .then((res) => {
         console.log(res);
+        alert("Product Added");
       })
       .catch((err) => console.log(err));
   };

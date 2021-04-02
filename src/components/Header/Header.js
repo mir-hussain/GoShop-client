@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
+import { UserContext } from "../../App";
 //css
 import "./Header.css";
-//router
+//react-router-dom
 import { Link, useLocation } from "react-router-dom";
-import { UserContext } from "../../App";
+//firebase to handle logout
 import firebase from "firebase/app";
 
 const Header = () => {
   const [user, setUser] = useContext(UserContext);
+  console.log(user);
+
+  //to select the query in url to render accordingly
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);

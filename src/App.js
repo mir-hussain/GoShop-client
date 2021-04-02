@@ -1,3 +1,4 @@
+//components
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
@@ -19,8 +20,8 @@ export const UserContext = createContext();
 function App() {
   const [user, setUser] = useState({
     loggedIn: false,
+    email: "",
   });
-  console.log(user);
   return (
     <UserContext.Provider value={[user, setUser]}>
       <Router>
